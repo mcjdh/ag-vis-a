@@ -16,6 +16,14 @@
 
         <div class="controls">
             <div class="control-group">
+                <label for="mode-select">Visualization Mode</label>
+                <select id="mode-select" class="select">
+                    <option value="single">Single Algorithm</option>
+                    <option value="race">Algorithm Race!</option>
+                </select>
+            </div>
+
+            <div class="control-group" id="single-algorithm-group">
                 <label for="algorithm-select">Algorithm</label>
                 <select id="algorithm-select" class="select">
                     <option value="bubble">Bubble Sort</option>
@@ -27,9 +35,33 @@
                 </select>
             </div>
 
+            <div class="control-group" id="race-algorithms-group" style="display: none;">
+                <label>Racing Algorithms</label>
+                <div class="checkbox-group">
+                    <label class="checkbox-item">
+                        <input type="checkbox" value="bubble" checked> Bubble Sort
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" value="selection" checked> Selection Sort
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" value="insertion" checked> Insertion Sort
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" value="merge" checked> Merge Sort
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" value="quick" checked> Quick Sort
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" value="heap" checked> Heap Sort
+                    </label>
+                </div>
+            </div>
+
             <div class="control-group">
                 <label for="array-size">Array Size: <span id="size-value">50</span></label>
-                <input type="range" id="array-size" class="slider" min="10" max="200" value="50">
+                <input type="range" id="array-size" class="slider" min="10" max="100" value="50">
             </div>
 
             <div class="control-group">
@@ -37,18 +69,14 @@
                 <input type="range" id="speed-control" class="slider" min="1" max="10" value="5">
             </div>
 
-            <div class="button-group">
-                <button id="generate-btn" class="btn btn-secondary">Generate New Array</button>
-                <button id="start-btn" class="btn btn-primary">Start Visualization</button>
-                <button id="stop-btn" class="btn btn-danger" disabled>Stop</button>
-            </div>
+                        <div class="button-group">                <button id="generate-btn" class="btn btn-secondary">Generate New Array</button>                <button id="custom-data-btn" class="btn btn-secondary" style="display: none;">Custom Data</button>                <button id="charts-btn" class="btn btn-secondary" style="display: none;">Performance Charts</button>                <button id="start-btn" class="btn btn-primary">Start Race!</button>                <button id="stop-btn" class="btn btn-danger" disabled>Stop</button>            </div>
         </div>
 
-        <div class="canvas-container">
+        <div class="canvas-container" id="canvas-container">
             <canvas id="visualization-canvas"></canvas>
         </div>
 
-        <div class="info-panel">
+        <div class="info-panel" id="info-panel">
             <div class="stats">
                 <div class="stat">
                     <span class="stat-label">Comparisons:</span>
@@ -72,6 +100,8 @@
                 </div>
             </div>
         </div>
+
+                        <div class="performance-charts" id="performance-charts" style="display: none;">            <h3>📊 Real-Time Performance</h3>            <div class="charts-container">                <div class="chart-item">                    <h4>Operations Over Time</h4>                    <canvas id="operations-chart" width="400" height="200"></canvas>                </div>                <div class="chart-item">                    <h4>Progress Percentage</h4>                    <canvas id="progress-chart" width="400" height="200"></canvas>                </div>            </div>        </div>        <div class="custom-input" id="custom-input" style="display: none;">            <h3>🎯 Custom Data Input</h3>            <div class="input-container">                <div class="input-group">                    <label for="custom-numbers">Enter Numbers (comma-separated):</label>                    <textarea id="custom-numbers" placeholder="42, 17, 89, 3, 56, 91, 23, 67, 12, 78"></textarea>                    <div id="custom-data-error" class="custom-data-error"></div>                </div>                <div class="input-group">                    <label for="data-pattern">Or Choose a Pattern:</label>                    <select id="data-pattern" class="select">                        <option value="">Custom Numbers</option>                        <option value="random">Random Numbers</option>                        <option value="sorted">Already Sorted</option>                        <option value="reverse">Reverse Sorted</option>                        <option value="nearly">Nearly Sorted</option>                        <option value="duplicates">Many Duplicates</option>                        <option value="mountain">Mountain Shape</option>                    </select>                </div>                <button id="apply-custom-data" class="btn btn-primary">Apply Custom Data</button>            </div>        </div>        <div class="race-results" id="race-results" style="display: none;">            <h3>🏆 Race Results</h3>            <div id="race-leaderboard" class="leaderboard"></div>        </div>
     </div>
 
     <script src="script.js"></script>
