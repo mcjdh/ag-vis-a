@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algorithm Visualizer - Watch Algorithms Dance</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="title">Algorithm Visualizer</h1>
+            <p class="subtitle">Watch sorting algorithms come to life through elegant animations</p>
+        </header>
+
+        <div class="controls">
+            <div class="control-group">
+                <label for="algorithm-select">Algorithm</label>
+                <select id="algorithm-select" class="select">
+                    <option value="bubble">Bubble Sort</option>
+                    <option value="selection">Selection Sort</option>
+                    <option value="insertion">Insertion Sort</option>
+                    <option value="merge">Merge Sort</option>
+                    <option value="quick">Quick Sort</option>
+                    <option value="heap">Heap Sort</option>
+                </select>
+            </div>
+
+            <div class="control-group">
+                <label for="array-size">Array Size: <span id="size-value">50</span></label>
+                <input type="range" id="array-size" class="slider" min="10" max="200" value="50">
+            </div>
+
+            <div class="control-group">
+                <label for="speed-control">Speed: <span id="speed-value">Medium</span></label>
+                <input type="range" id="speed-control" class="slider" min="1" max="10" value="5">
+            </div>
+
+            <div class="button-group">
+                <button id="generate-btn" class="btn btn-secondary">Generate New Array</button>
+                <button id="start-btn" class="btn btn-primary">Start Visualization</button>
+                <button id="stop-btn" class="btn btn-danger" disabled>Stop</button>
+            </div>
+        </div>
+
+        <div class="canvas-container">
+            <canvas id="visualization-canvas"></canvas>
+        </div>
+
+        <div class="info-panel">
+            <div class="stats">
+                <div class="stat">
+                    <span class="stat-label">Comparisons:</span>
+                    <span id="comparisons" class="stat-value">0</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Swaps:</span>
+                    <span id="swaps" class="stat-value">0</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Time:</span>
+                    <span id="time" class="stat-value">0ms</span>
+                </div>
+            </div>
+            <div class="algorithm-info">
+                <h3 id="algo-name">Bubble Sort</h3>
+                <p id="algo-description">A simple sorting algorithm that repeatedly steps through the list, compares adjacent elements and swaps them if they are in the wrong order.</p>
+                <div class="complexity">
+                    <span class="complexity-item">Time: <strong id="time-complexity">O(n²)</strong></span>
+                    <span class="complexity-item">Space: <strong id="space-complexity">O(1)</strong></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
